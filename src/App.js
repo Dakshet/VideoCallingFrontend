@@ -1,24 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+
+} from "react-router-dom";
+import Lobby from "./Screens/Lobby.js"
+import VideoState from "./context/VideoState.js"
+import Room from "./Screens/Room.js"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <VideoState>
+      <div >
+        <Router>
+
+          <Routes>
+
+            <Route path="/" element={<Lobby />} />
+            <Route path="/room/:roomId" element={<Room />} />
+
+          </Routes>
+
+        </Router>
+      </div>
+    </VideoState>
   );
 }
 
